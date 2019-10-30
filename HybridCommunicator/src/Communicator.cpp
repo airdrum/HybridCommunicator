@@ -8,11 +8,12 @@
 #include "Communicator.h"
 
 Communicator::Communicator(){
-	 m_pktGen = new PacketGenerator();
-	 m_socket = new	SocketController();
-	 m_pktCoder = new PacketCoder();
-	 m_config = new Configurator();
-	 m_logger = new Logger();
+	std::cout << "#### Communicator Facade has been called." << std::endl;
+	m_pktGen = new PacketGenerator();
+	m_socket = new	SocketController();
+	m_pktCoder = new PacketCoder();
+	m_config = new Configurator();
+	m_logger = new Logger();
 
 	init();
 }
@@ -22,7 +23,7 @@ Communicator::~Communicator(){
 }
 
 void Communicator::init(){
-	std::cout << "Communicator Facade has been called." << std::endl;
+
 	m_config->getNodes();
 	m_config->getTests();
 	m_pktGen->generateDummyPacket();
