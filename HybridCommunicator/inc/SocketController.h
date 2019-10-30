@@ -9,10 +9,11 @@
 #define SOCKETCONTROLLER_H_
 #include <iostream>
 #include "Socket.h"
-
+#include "Sensor.h"
 class SocketController
 {
 	Socket *m_socket;
+	Sensor *m_sensor;
 	void init();
 public:
 	SocketController();

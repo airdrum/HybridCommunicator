@@ -26,6 +26,7 @@ private:
 
 public:
 	Communicator();
+	void start();
 	~Communicator();
 
 };

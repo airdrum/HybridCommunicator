@@ -13,6 +13,6 @@ using namespace std;
 
 int main() {
 	Communicator *pCommunicator = new Communicator();
-
+	pCommunicator->start();
 	return 0;
 }

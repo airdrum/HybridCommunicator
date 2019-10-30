@@ -11,6 +11,7 @@
 
 SocketController::SocketController(){
 	m_socket = new Socket();
+	m_sensor = new Sensor();
 	init();
 }
 
