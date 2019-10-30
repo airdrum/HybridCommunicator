@@ -16,22 +16,21 @@ Configurator::~Configurator(){
 }
 
 void Configurator::init(){
-	std::cout << "Configurator has been called" << std::endl;
 
 }
 
 void Configurator::getNodes()
 {
-	std::cout << "Configurator::getNodes() is called" << std::endl;
-
+	m_node_config.getConfigData();
 }
 void Configurator::getTests()
 {
-
+	m_test_config.getConfigData();
 }
 void Configurator::setConfigurations()
 {
-
+	this->getNodes();
+	this->getTests();
 }
 
 

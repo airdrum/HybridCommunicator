@@ -8,19 +8,27 @@
 #ifndef SOCKETCONTROLLER_H_
 #define SOCKETCONTROLLER_H_
 #include <iostream>
+#include <string>
 #include "Socket.h"
 #include "Sensor.h"
+#include "Udp.h"
+#include "Tcp.h"
+using namespace std;
 class SocketController
 {
-	Socket *m_socket;
-	Sensor *m_sensor;
+	Socket m_socket;
+	Sensor m_sensor;
+	Tcp m_tcp;
+	Udp m_udp;
+
 	void init();
 public:
 	SocketController();
 	~SocketController();
 	void createSocketData();
-	void setSenderPort();
-	void setReceiverPort();
+
+	void sendSingleData(string protocol);
+
 };
 
 

@@ -17,11 +17,11 @@ class Communicator
 {
 private:
 	void init();
-	PacketGenerator *m_pktGen;
-	SocketController *m_socket;
-	PacketCoder *m_pktCoder;
-	Configurator *m_config;
-	Logger *m_logger;
+	PacketGenerator m_pktGen;
+	SocketController m_socket;
+	PacketCoder m_pktCoder;
+	Configurator m_config;
+	Logger m_logger;
 
 
 public:

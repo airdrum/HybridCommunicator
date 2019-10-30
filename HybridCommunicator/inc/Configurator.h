@@ -9,10 +9,13 @@
 #define CONFIGURATOR_H_
 
 #include <iostream>
-
+#include "TestConfigLoader.h"
+#include "NodeConfigLoader.h"
 class Configurator
 {
 	void init();
+	TestConfigLoader m_test_config;
+	NodeConfigLoader m_node_config;
 public:
 	Configurator();
 	~Configurator();

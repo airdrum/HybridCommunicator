@@ -10,8 +10,6 @@
 #include <iostream>
 
 SocketController::SocketController(){
-	m_socket = new Socket();
-	m_sensor = new Sensor();
 	init();
 }
 
@@ -27,12 +25,16 @@ void SocketController::createSocketData()
 {
 	std::cout << "SocketController::createSocketData() is called" << std::endl;
 }
-void SocketController::setSenderPort()
+
+void SocketController::sendSingleData(string protocol)
 {
-	std::cout << "SocketController::setSenderPort() is called" << std::endl;
-}
-void SocketController::setReceiverPort()
-{
-	std::cout << "SocketController::setReceiverPort() is called" << std::endl;
+	if(protocol=="tcp")
+	{
+		m_tcp.generateData();
+	}
+	else if (protocol == "udp")
+	{
+		m_udp.generateData();
+	}
 }
 

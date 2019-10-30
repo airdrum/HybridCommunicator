@@ -9,7 +9,23 @@
 #define UDP_H_
 
 
+class Udp
+{
+	int m_rx_port;
+	int m_tx_port;
+	int m_pkt_len;
+	void init();
+public:
+	Udp();
+	~Udp();
+	void setSenderPort();
+	void setReceiverPort();
+	void setPacketLength();
+	void setBufferSize();
+	void generateData();
+};
 
 
 
-#endif /* UDP_H_ */
+#endif /* SOCKET_H_ */
+

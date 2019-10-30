@@ -5,13 +5,6 @@
  *      Author: sy
  */
 
-/*
- * Socket.h
- *
- *  Created on: Oct 28, 2019
- *      Author: sy
- */
-
 
 #include "Socket.h"
 #include <iostream>

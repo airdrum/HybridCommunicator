@@ -1,0 +1,10 @@
+<Tests>
+  <Test>
+    <TransmissionType>RFFSO</TransmissionType>
+    <Direction>BusToEng</Direction>
+    <Protocol>UDP</Protocol>
+    <BufferSize>1024</BufferSize>
+    <Duration>999</Duration>
+    <Timeout>60</Timeout>
+  </Test>
+</Tests>
