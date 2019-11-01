@@ -29,11 +29,11 @@ void PacketCoder::init(){
 
 void PacketCoder::encodeData()
 {
-
+	m_encoder.encodeData();
 }
 void PacketCoder::decodeData()
 {
-
+	m_decoder.decodeData();
 }
 
 

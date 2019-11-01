@@ -7,4 +7,25 @@
 
 
 
+#include "Decoder.h"
+#include <iostream>
+
+Decoder::Decoder(){
+	init();
+}
+
+Decoder::~Decoder(){
+
+}
+
+void Decoder::init(){
+	std::cout << "Decoder has been called" << std::endl;
+}
+
+
+void Decoder::decodeData()
+{
+	std::cout << "--> Decoder data has been generated." << std::endl;
+}
+
 

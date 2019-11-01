@@ -9,6 +9,18 @@
 #define ENCODER_H_
 
 
+class Encoder
+{
+
+	void init();
+public:
+	Encoder();
+	~Encoder();
+	void encodeData();
+};
+
+
+
 
 
 

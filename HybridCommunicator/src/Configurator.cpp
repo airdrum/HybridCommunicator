@@ -19,18 +19,14 @@ void Configurator::init(){
 
 }
 
-void Configurator::getNodes()
+vector<Nodes> Configurator::getNodes()
 {
-	m_node_config.getConfigData();
+	return m_node_config.getConfigData();
 }
-void Configurator::getTests()
+vector<Tests> Configurator::getTests()
 {
-	m_test_config.getConfigData();
+	return m_test_config.getConfigData();
 }
-void Configurator::setConfigurations()
-{
-	this->getNodes();
-	this->getTests();
-}
+
 
 

@@ -9,9 +9,13 @@
 #define PACKETCODER_H_
 
 #include <iostream>
+#include "Encoder.h"
+#include "Decoder.h"
 
 class PacketCoder
 {
+	Encoder m_encoder;
+	Decoder m_decoder;
 	void init();
 public:
 	PacketCoder();

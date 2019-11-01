@@ -1,5 +1,6 @@
 <Nodes>
-  <EngineeringNode>
+  <Node>
+    <Name>EngineeringNode</Name>
     <Office>
       <ipAddress>10.100.93.15</ipAddress>
       <username>pi</username>
@@ -17,8 +18,9 @@
       <username>root</username>
       <password>admin</password>
     </RF>
-  </EngineeringNode>
-  <BusinessNode>
+  </Node>
+  <Node>
+    <Name>BusinessNode</Name>
     <Office>
       <ipAddress>10.100.93.16</ipAddress>
       <username>pi</username>
@@ -36,8 +38,9 @@
       <username>root</username>
       <password>admin</password>
     </RF>
-  </BusinessNode>
-  <WeatherNode>
+  </Node>
+  <Node>
+  	<Name>WeatherNode</Name>
     <Office>
       <ipAddress>10.100.93.21</ipAddress>
       <username></username>
@@ -55,5 +58,5 @@
       <username></username>
       <password></password>
     </RF>
-  </WeatherNode>
+  </Node>
 </Nodes>

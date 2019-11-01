@@ -30,9 +30,13 @@ void TestConfigLoader::init(){
 }
 
 
-void TestConfigLoader::getConfigData()
+vector<Tests> TestConfigLoader::getConfigData()
 {
-	std::cout << "Test cofig xml is received." << std::endl;
+	_test.testNumber = m_test_number++;
+	m_tests_list.push_back(_test);
+	_test.testNumber = m_test_number++;
+	m_tests_list.push_back(_test);
+	return m_tests_list;
 
 }
 

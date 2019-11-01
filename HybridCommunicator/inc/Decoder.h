@@ -1,5 +1,5 @@
 /*
- * Decoder.h
+ * Encoder.h
  *
  *  Created on: Oct 28, 2019
  *      Author: sy
@@ -9,7 +9,19 @@
 #define DECODER_H_
 
 
+class Decoder
+{
+
+	void init();
+public:
+	Decoder();
+	~Decoder();
+	void decodeData();
+};
 
 
 
-#endif /* DECODER_H_ */
+
+
+
+#endif /* ENCODER_H_ */

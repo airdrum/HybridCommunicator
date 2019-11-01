@@ -23,6 +23,8 @@ private:
 	Configurator m_config;
 	Logger m_logger;
 
+	vector<Nodes> m_node_list;
+	vector<Tests> m_test_list;
 
 public:
 	Communicator();

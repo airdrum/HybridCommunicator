@@ -24,8 +24,10 @@ void Communicator::init(){
 }
 
 void Communicator::start(){
-	// Set node information from NodeConfig.xml
-	m_config.setConfigurations();
+	// Get all nodes information from NodeConfig.xml
+	m_node_list = m_config.getNodes();
+	// Get all tests information from NodeConfig.xml
+	m_test_list = m_config.getTests();
 	// Generate a dummy Packet
 	m_pktGen.generateDummyPacket();
 	// Encode the generated Data
