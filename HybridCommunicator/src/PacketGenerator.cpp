@@ -20,10 +20,12 @@ void PacketGenerator::init(){
 
 }
 
-char PacketGenerator::generateDummyPacket()
+void PacketGenerator::generateDummyPacket(char* packet )
 {
-	std::cout << "PacketGenerator::generateDummyPacket() is called" << std::endl;
-	return 'g';
+
+	for (int r = 0; r<DUMMY_PACKET_SIZE; r++)
+		packet[r] = rand() % ('z' - 'a' + 1) + 'a';
+
 }
 char PacketGenerator::generateJpgPacket()
 {

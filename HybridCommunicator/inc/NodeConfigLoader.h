@@ -10,13 +10,10 @@
 #include <boost/foreach.hpp>
 #include <vector>
 using namespace std;
-namespace pt = boost::property_tree;
 
 class NodeConfigLoader
 {
 	vector<Nodes> m_nodes_list;
-
-	pt::ptree xml_tree;
 	void init();
 public:
 	NodeConfigLoader();

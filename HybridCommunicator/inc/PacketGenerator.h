@@ -7,16 +7,18 @@
 
 #ifndef PACKETGENERATOR_H_
 #define PACKETGENERATOR_H_
+#define DUMMY_PACKET_SIZE 1024
 #include <iostream>
 
 class PacketGenerator
 {
 	void init();
+
 public:
 	PacketGenerator();
 	~PacketGenerator();
 
-	char generateDummyPacket();
+	void generateDummyPacket(char* packet);
 	char generateJpgPacket();
 	char generateVideoPacket();
 };

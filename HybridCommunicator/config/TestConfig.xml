@@ -7,4 +7,20 @@
     <Duration>999</Duration>
     <Timeout>60</Timeout>
   </Test>
+  <Test>
+    <TransmissionType>RF</TransmissionType>
+    <Direction>BusToEng</Direction>
+    <Protocol>UDP</Protocol>
+    <BufferSize>1024</BufferSize>
+    <Duration>999</Duration>
+    <Timeout>60</Timeout>
+  </Test>
+  <Test>
+    <TransmissionType>FSO</TransmissionType>
+    <Direction>BusToEng</Direction>
+    <Protocol>UDP</Protocol>
+    <BufferSize>1024</BufferSize>
+    <Duration>999</Duration>
+    <Timeout>60</Timeout>
+  </Test>
 </Tests>

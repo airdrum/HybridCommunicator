@@ -23,6 +23,7 @@ vector<Nodes> Configurator::getNodes()
 {
 	return m_node_config.getConfigData();
 }
+
 vector<Tests> Configurator::getTests()
 {
 	return m_test_config.getConfigData();

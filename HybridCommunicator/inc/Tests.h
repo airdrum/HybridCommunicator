@@ -11,9 +11,9 @@ struct Tests{
 	string transmissionType;
 	string direction;
 	string protocol;
-	string bufferSize;
+	int bufferSize;
 	int duration;
-	string timeout;
+	int timeout;
 };
 
 #endif /* TESTS_H_ */

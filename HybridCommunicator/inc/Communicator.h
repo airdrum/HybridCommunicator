@@ -22,7 +22,7 @@ private:
 	PacketCoder m_pktCoder;
 	Configurator m_config;
 	Logger m_logger;
-
+	char m_dummyPacket[DUMMY_PACKET_SIZE];
 	vector<Nodes> m_node_list;
 	vector<Tests> m_test_list;
 
