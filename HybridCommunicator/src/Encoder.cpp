@@ -23,9 +23,9 @@ void Encoder::init(){
 }
 
 
-void Encoder::encodeData()
+void Encoder::encodeData(uint8_t* data)
 {
-	std::cout << "--> Encoder data has been generated." << std::endl;
+	std::cout << "No encoding has been provided." << std::endl;
 }
 
 

@@ -20,7 +20,7 @@ void PacketGenerator::init(){
 
 }
 
-void PacketGenerator::generateDummyPacket(char* packet )
+void PacketGenerator::generateDummyPacket(uint8_t* packet )
 {
 
 	for (int r = 0; r<DUMMY_PACKET_SIZE; r++)

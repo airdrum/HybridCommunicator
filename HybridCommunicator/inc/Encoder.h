@@ -8,6 +8,7 @@
 #ifndef ENCODER_H_
 #define ENCODER_H_
 
+#include <iostream>
 
 class Encoder
 {
@@ -16,7 +17,7 @@ class Encoder
 public:
 	Encoder();
 	~Encoder();
-	void encodeData();
+	void encodeData(uint8_t* data);
 };
 
 

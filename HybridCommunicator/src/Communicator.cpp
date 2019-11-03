@@ -36,14 +36,14 @@ void Communicator::start(){
 		std::cout << "Protocol			:" <<_test.protocol << std::endl;
 		std::cout << "Duration			:" <<_test.duration << std::endl;
 		std::cout << "Buffer size		:" <<_test.bufferSize << std::endl;
+
 		m_pktGen.generateDummyPacket(m_dummyPacket);
 		// Encode the generated Data
-		std::cout << m_dummyPacket << std::endl;
-		m_pktCoder.encodeData();
+		m_pktCoder.encodeData(m_dummyPacket);
 		// Create socket data
-		m_socket.createSocketData();
+		m_socket.createSocketData(m_dummyPacket,m_node_list,_test);
 		// Send Single Data
-		m_socket.sendSingleData("udp");
+		m_socket.sendSingleData();
 		// Decode received data
 		m_pktCoder.decodeData();
 		// Print error rate
@@ -51,7 +51,7 @@ void Communicator::start(){
 		// Print receive data rate
 		m_logger.printReceiveDataRate();
 		std::cout << "**************************" << std::endl;
-	}
+	}//system.pick bekleme, clock nasıl kullanılır, işşlemci load mikltarı ölçülür
 
 }
 

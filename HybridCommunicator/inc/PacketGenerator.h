@@ -18,7 +18,7 @@ public:
 	PacketGenerator();
 	~PacketGenerator();
 
-	void generateDummyPacket(char* packet);
+	void generateDummyPacket(uint8_t* packet);
 	char generateJpgPacket();
 	char generateVideoPacket();
 };
