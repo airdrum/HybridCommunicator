@@ -20,6 +20,14 @@ SocketController::~SocketController(){
 
 void SocketController::init(){
 	std::cout << "SocketController::init() is called" << std::endl;
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	if (sockfd == -1) {
+		printf("socket creation failed...\n");
+		exit(0);
+	}
+	else
+		printf("Socket successfully created..\n");
+	bzero(&servaddr, sizeof(servaddr));
 }
 
 
@@ -100,21 +108,6 @@ void SocketController::createSocketData(uint8_t* dummyPacket, vector<Nodes> _nod
 
 	setTransmissionInformation(_node_list,_test);
 	if (SOCK_DBG){
-		int sockfd, connfd;
-		struct sockaddr_in servaddr, cli;
-
-		// socket create and verification
-		sockfd = socket(AF_INET, SOCK_STREAM, 0);
-		if (sockfd == -1) {
-			printf("socket creation failed...\n");
-			exit(0);
-		}
-		else
-			printf("Socket successfully created..\n");
-		bzero(&servaddr, sizeof(servaddr));
-
-		// assign IP, PORT
-
 
 		servaddr.sin_family = AF_INET;
 		servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
@@ -139,14 +132,13 @@ void SocketController::createSocketData(uint8_t* dummyPacket, vector<Nodes> _nod
 			            ;
 		 */
 		bzero(buff, sizeof(buff));
-					for(int i=0;i<MAX;i++)
-								buff[i]='A';
+		for(int i=0;i<MAX;i++)
+			buff[i]='A';
 
-		//for(;;){
-
+		for(int i =0;i<100;i++){
 			write(sockfd, buff, sizeof(buff));
-			//usleep(1);
-		//}
+			usleep(10);
+		}
 		//close(sockfd);
 	}
 	//}

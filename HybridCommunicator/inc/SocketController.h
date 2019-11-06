@@ -23,7 +23,7 @@
 #include <sys/socket.h>
 #include <libssh2.h>
 #define MAX 1024
-#define PORT 50000
+#define PORT 50010
 #define SA struct sockaddr
 #include "Tests.h"
 #include "Nodes.h"
@@ -84,6 +84,8 @@ class SocketController
 	string m_receiver_rf_dutIp;
 	string m_receiver_rf_username;
 	string m_receiver_rf_password;
+	int sockfd, connfd;
+			struct sockaddr_in servaddr, cli;
 	void init();
 public:
 	SocketController();
