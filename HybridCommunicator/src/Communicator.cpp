@@ -52,7 +52,7 @@ void Communicator::start(){
 		m_logger.printReceiveDataRate();
 		std::cout << "**************************" << std::endl;
 	}//system.pick bekleme, clock nasıl kullanılır, işşlemci load mikltarı ölçülür
-
+	std::cout << "END" << std::endl;
 }
 
 

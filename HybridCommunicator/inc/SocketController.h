@@ -14,6 +14,17 @@
 #include "Udp.h"
 #include "Tcp.h"
 #include <vector>
+#include <netdb.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <libssh2.h>
+#define MAX 1024
+#define PORT 50000
+#define SA struct sockaddr
 #include "Tests.h"
 #include "Nodes.h"
 
@@ -23,7 +34,6 @@ using namespace std;
 #define UART_PACKAGE_SIZE 128
 
 #define TCP_SENDER_PORT 50000
-
 #define UDP_SENDER_PORT 60000
 
 struct Tcp_transfer_data{
