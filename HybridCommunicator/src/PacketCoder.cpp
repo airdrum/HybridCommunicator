@@ -27,7 +27,7 @@ void PacketCoder::init(){
 	std::cout << "PacketCoder has been called" << std::endl;
 }
 
-void PacketCoder::encodeData(uint8_t* data)
+void PacketCoder::encodeData(char* data)
 {
 	m_encoder.encodeData(data);
 }

@@ -7,7 +7,7 @@
       <password>raspberry</password>
     </Office>
     <FSO>
-      <ipAddress>192.168.100.21</ipAddress>
+      <ipAddress>192.168.1.10</ipAddress>
       <dutIp>192.168.100.221</dutIp>
       <username></username>
       <password></password>
@@ -27,7 +27,7 @@
       <password>raspberry</password>
     </Office>
     <FSO>
-      <ipAddress>192.168.100.11</ipAddress>
+      <ipAddress>192.168.1.20</ipAddress>
       <dutIp>192.168.100.220</dutIp>
       <username>root</username>
       <password>raspberry</password>

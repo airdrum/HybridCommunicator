@@ -21,7 +21,7 @@ public:
 	PacketCoder();
 	~PacketCoder();
 
-	void encodeData(uint8_t* data);
+	void encodeData(char* data);
 	void decodeData();
 
 };

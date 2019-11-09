@@ -17,7 +17,7 @@ class Encoder
 public:
 	Encoder();
 	~Encoder();
-	void encodeData(uint8_t* data);
+	void encodeData(char* data);
 };
 
 

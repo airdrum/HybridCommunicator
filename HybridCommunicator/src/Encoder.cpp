@@ -23,7 +23,7 @@ void Encoder::init(){
 }
 
 
-void Encoder::encodeData(uint8_t* data)
+void Encoder::encodeData(char* data)
 {
 	std::cout << "No encoding has been provided." << std::endl;
 }
