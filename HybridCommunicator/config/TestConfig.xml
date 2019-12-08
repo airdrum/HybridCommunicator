@@ -1,26 +1,26 @@
 <Tests>
-  <Test>
-    <TransmissionType>RFFSO</TransmissionType>
+<Test>
+    <TransmissionType>Hard-RFFSO</TransmissionType>
     <Direction>EngToBus</Direction>
     <Protocol>UDP</Protocol>
-    <BufferSize>100</BufferSize>
-    <Duration>20</Duration>
+    <BufferSize>20</BufferSize>
+    <Duration>100</Duration>
     <Timeout>60</Timeout>
   </Test>
   <Test>
-    <TransmissionType>FSO</TransmissionType>
+    <TransmissionType>Hard-RFFSO</TransmissionType>
     <Direction>EngToBus</Direction>
     <Protocol>UDP</Protocol>
-    <BufferSize>200</BufferSize>
-    <Duration>20</Duration>
+    <BufferSize>100</BufferSize>
+    <Duration>10</Duration>
     <Timeout>60</Timeout>
   </Test>
   <Test>
     <TransmissionType>RF</TransmissionType>
     <Direction>EngToBus</Direction>
     <Protocol>UDP</Protocol>
-    <BufferSize>300</BufferSize>
-    <Duration>20</Duration>
+    <BufferSize>200</BufferSize>
+    <Duration>10</Duration>
     <Timeout>60</Timeout>
   </Test>
 </Tests>

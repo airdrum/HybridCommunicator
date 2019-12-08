@@ -62,6 +62,25 @@ int SocketController::getReceiverIndex( vector<Nodes> _node_list,Tests _test)
 
 }
 
+int readContent(){
+	int sum = 0;
+	int x;
+	ifstream inFile;
+
+	inFile.open("config/file.txt");
+	if (!inFile) {
+		cout << "Unable to open file";
+		exit(1); // terminate with error
+	}
+
+	while (inFile >> x) {
+		sum = sum + x;
+	}
+
+	inFile.close();
+	return sum;
+}
+
 void SocketController::setTransmissionInformation( vector<Nodes> _node_list,Tests _test)
 {
 	int sender_index , receiver_index;
@@ -102,13 +121,24 @@ void SocketController::setTransmissionInformation( vector<Nodes> _node_list,Test
 			exit(1);
 		}
 	}else if(_test.transmissionType.compare("RF")==0){
-		printf("[+] FSO socket is activated...\n");
+		printf("[+] RF socket is activated...\n");
 		if((m_raw_sock_rf = socket(AF_INET, SOCK_RAW, IPPROTO_RAW)) < 0){
 			perror("socket");
 			exit(1);
 		}
 	}else if(_test.transmissionType.compare("RFFSO")==0){
-		printf("[+] FSO socket is activated...\n");
+		printf("[+] RFFSO socket is activated...\n");
+		if((m_raw_sock_fso = socket(AF_INET, SOCK_RAW, IPPROTO_RAW)) < 0){
+			perror("socket");
+			exit(1);
+		}
+
+		if((m_raw_sock_rf = socket(AF_INET, SOCK_RAW, IPPROTO_RAW)) < 0){
+			perror("socket");
+			exit(1);
+		}
+	}else if(_test.transmissionType.compare("Hard-RFFSO")==0){
+		printf("[+] RFFSO socket is activated...\n");
 		if((m_raw_sock_fso = socket(AF_INET, SOCK_RAW, IPPROTO_RAW)) < 0){
 			perror("socket");
 			exit(1);
@@ -163,70 +193,56 @@ void SocketController::createSocketData( vector<Nodes> _node_list, Tests _test)
 
 
 	if(m_test.transmissionType.compare("RF") == 0){
-		char sstr[m_sender_rf_ip.size() + 1];
-		strcpy(sstr,m_sender_rf_ip.c_str());
-		char dstr[m_receiver_rf_ip.size() + 1];
-		strcpy(dstr,m_receiver_rf_ip.c_str());
-		char *dsthost = dstr;//"192.168.2.20";
-		char *srchost = sstr;//"192.168.2.10";//m_sender_rf_ip.c_str();//
 
 
 		m_src_addr_rf.sin_family = AF_INET;
-		m_src_addr_rf.sin_port = htons(5000);
-		inet_aton(srchost, &m_src_addr_rf.sin_addr);
+		m_src_addr_rf.sin_port = htons(6000);
+		inet_aton(m_sender_rf_ip.c_str(), &m_src_addr_rf.sin_addr);
 
 		m_dst_addr_rf.sin_family = AF_INET;
-		m_dst_addr_rf.sin_port = htons(5001);
-		inet_aton(dsthost, &m_dst_addr_rf.sin_addr);
+		m_dst_addr_rf.sin_port = htons(6001);
+		inet_aton(m_receiver_rf_ip.c_str(), &m_dst_addr_rf.sin_addr);
 	}else if(m_test.transmissionType.compare("FSO") == 0){
-		char sstr[m_sender_fso_ip.size() + 1];
-		strcpy(sstr,m_sender_fso_ip.c_str());
-		char dstr[m_receiver_fso_ip.size() + 1];
-		strcpy(dstr,m_receiver_fso_ip.c_str());
-		char *dsthost = dstr;//"192.168.2.20";
-		char *srchost = sstr;//"192.168.2.10";//m_sender_rf_ip.c_str();//
-
 
 		m_src_addr_fso.sin_family = AF_INET;
-		m_src_addr_fso.sin_port = htons(6000);
-		inet_aton(srchost, &m_src_addr_fso.sin_addr);
+		m_src_addr_fso.sin_port = htons(5000);
+		inet_aton(m_sender_fso_ip.c_str(), &m_src_addr_fso.sin_addr);
 
 		m_dst_addr_fso.sin_family = AF_INET;
-		m_dst_addr_fso.sin_port = htons(6001);
-		inet_aton(dsthost, &m_dst_addr_fso.sin_addr);
+		m_dst_addr_fso.sin_port = htons(5001);
+		inet_aton(m_receiver_fso_ip.c_str(), &m_dst_addr_fso.sin_addr);
 	}else if(m_test.transmissionType.compare("RFFSO") == 0){
-		char sstr_rf[m_sender_rf_ip.size() + 1];
-		strcpy(sstr_rf,m_sender_rf_ip.c_str());
-		char dstr_rf[m_receiver_rf_ip.size() + 1];
-		strcpy(dstr_rf,m_receiver_rf_ip.c_str());
-		char *dsthost_rf = dstr_rf;//"192.168.2.20";
-		char *srchost_rf = sstr_rf;//"192.168.2.10";//m_sender_rf_ip.c_str();//
+		m_src_addr_fso.sin_family = AF_INET;
+		m_src_addr_fso.sin_port = htons(5000);
+		inet_aton(m_sender_fso_ip.c_str(), &m_src_addr_fso.sin_addr);
 
-
+		m_dst_addr_fso.sin_family = AF_INET;
+		m_dst_addr_fso.sin_port = htons(5001);
+		inet_aton(m_receiver_fso_ip.c_str(), &m_dst_addr_fso.sin_addr);
 		m_src_addr_rf.sin_family = AF_INET;
-		m_src_addr_rf.sin_port = htons(5000);
-		inet_aton(srchost_rf, &m_src_addr_rf.sin_addr);
+		m_src_addr_rf.sin_port = htons(6000);
+		inet_aton(m_sender_rf_ip.c_str(), &m_src_addr_rf.sin_addr);
 
 		m_dst_addr_rf.sin_family = AF_INET;
-		m_dst_addr_rf.sin_port = htons(5001);
-		inet_aton(dsthost_rf, &m_dst_addr_rf.sin_addr);
-
-		char sstr[m_sender_fso_ip.size() + 1];
-		strcpy(sstr,m_sender_fso_ip.c_str());
-		char dstr[m_receiver_fso_ip.size() + 1];
-		strcpy(dstr,m_receiver_fso_ip.c_str());
-		char *dsthost = dstr;//"192.168.2.20";
-		char *srchost = sstr;//"192.168.2.10";//m_sender_rf_ip.c_str();//
-
-
+		m_dst_addr_rf.sin_port = htons(6001);
+		inet_aton(m_receiver_rf_ip.c_str(), &m_dst_addr_rf.sin_addr);
+	}else if(m_test.transmissionType.compare("Hard-RFFSO") == 0){
 		m_src_addr_fso.sin_family = AF_INET;
-		m_src_addr_fso.sin_port = htons(6000);
-		inet_aton(srchost, &m_src_addr_fso.sin_addr);
+		m_src_addr_fso.sin_port = htons(5000);
+		inet_aton(m_sender_fso_ip.c_str(), &m_src_addr_fso.sin_addr);
 
 		m_dst_addr_fso.sin_family = AF_INET;
-		m_dst_addr_fso.sin_port = htons(6001);
-		inet_aton(dsthost, &m_dst_addr_fso.sin_addr);
+		m_dst_addr_fso.sin_port = htons(5001);
+		inet_aton(m_receiver_fso_ip.c_str(), &m_dst_addr_fso.sin_addr);
+		m_src_addr_rf.sin_family = AF_INET;
+		m_src_addr_rf.sin_port = htons(6000);
+		inet_aton(m_sender_rf_ip.c_str(), &m_src_addr_rf.sin_addr);
+
+		m_dst_addr_rf.sin_family = AF_INET;
+		m_dst_addr_rf.sin_port = htons(6001);
+		inet_aton(m_receiver_rf_ip.c_str(), &m_dst_addr_rf.sin_addr);
 	}
+
 
 
 	timespec_get(&ts, TIME_UTC);
@@ -244,22 +260,41 @@ void SocketController::sendSingleData(char* dummyPacket)
 	}
 	else if (m_protocol.compare("UDP") == 0)
 	{
+
+		string line;
+		ifstream myfile ("config/file.txt");
+
+
+
+
+
 		strcpy((char *)m_send_data, dummyPacket);
 		m_send_data_size = strlen(dummyPacket);
+		int i =0;
 		do {
 			timespec_get(&ts, TIME_UTC);
 			m_end_time = ts.tv_sec;
-			if(m_test.transmissionType.compare("RF") == 0)
+			if(m_test.transmissionType.compare("RF") == 0){
 				send_udp_packet(m_raw_sock_rf, m_src_addr_rf, m_dst_addr_rf, m_send_data, m_send_data_size);
-			else if(m_test.transmissionType.compare("FSO") == 0)
+				usleep(3000 * 1);
+			}else if(m_test.transmissionType.compare("FSO") == 0){
 				send_udp_packet(m_raw_sock_fso, m_src_addr_fso, m_dst_addr_fso, m_send_data, m_send_data_size);
-			else if(m_test.transmissionType.compare("RFFSO") == 0){
+				usleep(300 * 1);
+			}else if(m_test.transmissionType.compare("RFFSO") == 0){
 				send_udp_packet(m_raw_sock_rf, m_src_addr_rf, m_dst_addr_rf, m_send_data, m_send_data_size);
 				send_udp_packet(m_raw_sock_fso, m_src_addr_fso, m_dst_addr_fso, m_send_data, m_send_data_size);
 			}else if(m_test.transmissionType.compare("Hard-RFFSO") == 0){
-				send_udp_packet(m_raw_sock_rf, m_src_addr_rf, m_dst_addr_rf, m_send_data, m_send_data_size);
-				send_udp_packet(m_raw_sock_fso, m_src_addr_fso, m_dst_addr_fso, m_send_data, m_send_data_size);
+				//cout << readContent()<<endl;
+				if(readContent()== 1){
+					send_udp_packet(m_raw_sock_rf, m_src_addr_rf, m_dst_addr_rf, m_send_data, m_send_data_size);
+					usleep(3000 * 1);
+
+				}else if(readContent()== 2){
+					send_udp_packet(m_raw_sock_fso, m_src_addr_fso, m_dst_addr_fso, m_send_data, m_send_data_size);
+					usleep(300 * 1);
+				}
 			}
+			i++;
 
 		}while((m_end_time - m_start_time) < (double)m_test.duration);
 	}
